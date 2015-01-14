@@ -63,5 +63,3 @@ def old_roman(to_convert)
 
     print "\n\n"
 end
-
-old_roman(500)

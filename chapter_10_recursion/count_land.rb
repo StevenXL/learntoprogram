@@ -10,11 +10,11 @@ world = [[o,o,o,o,o,o,o,o,o,o,o],
          [o,o,o,M,o,o,o,o,o,M,o],
          [o,o,o,M,o,M,M,o,o,o,o],
          [o,o,o,o,M,M,M,M,o,o,o],
-         [o,o,o,M,M,M,M,M,M,M,o],
+         [o,o,o,M,M,M,M,M,M,M,M],
          [o,o,o,M,M,o,M,M,M,o,o],
          [o,o,o,o,o,o,M,M,o,o,o],
-         [o,M,o,o,o,M,o,o,o,o,o],
-         [o,o,o,o,o,o,o,o,o,o,o]]
+         [o,M,o,o,o,M,o,M,o,o,o],
+         [o,o,o,o,o,o,o,M,o,o,o]]
 
 def continent_size(world, x, y)
     if world[y][x] != "land"
@@ -42,5 +42,8 @@ def continent_size(world, x, y)
     size
 end
 
+=begin
 puts continent_size(world, 5, 5)
+=end
 
+puts (world[20][5] == nil)
