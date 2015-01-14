@@ -10,13 +10,18 @@ world = [[o,o,o,o,o,o,o,o,o,o,o],
          [o,o,o,M,o,o,o,o,o,M,o],
          [o,o,o,M,o,M,M,o,o,o,o],
          [o,o,o,o,M,M,M,M,o,o,o],
-         [o,o,o,M,M,M,M,M,M,M,M],
-         [o,o,o,M,M,o,M,M,M,o,o],
+         [o,o,o,M,M,M,M,M,M,o,o],
+         [o,o,o,M,M,o,M,M,M,M,M],
          [o,o,o,o,o,o,M,M,o,o,o],
          [o,M,o,o,o,M,o,M,o,o,o],
          [o,o,o,o,o,o,o,M,o,o,o]]
 
 def continent_size(world, x, y)
+    # make sure we don't fall off a cliff!
+    if (y >= world.length) || (x >= world[0].length)
+        return 0
+    end
+
     if world[y][x] != "land"
         # either it's water or we alreday counted it, but either way, we don't
         # want to count it now. 
@@ -42,8 +47,4 @@ def continent_size(world, x, y)
     size
 end
 
-=begin
 puts continent_size(world, 5, 5)
-=end
-
-puts (world[20][5] == nil)
