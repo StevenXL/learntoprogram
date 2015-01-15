@@ -25,6 +25,42 @@ def english_number(number)
     # "write" is the part we are writing out right now
 
     left = number
+    write = left / 1_000_000           # how many millions are left?
+    left = left - write * 1_000_000    # subtrac off those millions 
+
+    if write > 0
+        # here is the recursion
+        millions = english_number(write)
+
+        # added a dash so that the display is better
+        num_string = num_string + millions + "-million"
+    end 
+
+    if left > 0 
+        # if string is empty, do not add unnecessary spaces
+        if num_string.length > 0
+            num_string = num_string + " "
+        end
+    end
+
+    write = left / 1000           # how many thousands are left?
+    left = left - write * 1000    # subtrac off those thousands
+
+    if write > 0
+        # here is the recursion
+        thousands = english_number(write)
+
+        # added a dash so that the display is better
+        num_string = num_string + thousands + "-thousand"
+    end 
+
+    if left > 0 
+        # if string is empty, do not add unnecessary spaces
+        if num_string.length > 0
+            num_string = num_string + " "
+        end
+    end
+
     write = left / 100            # how many hundreds left?
     left = left - write * 100     # subtract off those hundreds
 
@@ -32,8 +68,9 @@ def english_number(number)
         # here is the recursion
         hundreds = english_number(write)
 
-        num_string = num_string + hundreds + "hundred"
-    end
+        # added a dash so that the display is better
+        num_string = num_string + hundreds + "-hundred"
+    end 
 
     if left > 0 
         # if string is empty, do not add unnecessary spaces
