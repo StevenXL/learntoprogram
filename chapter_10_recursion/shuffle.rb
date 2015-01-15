@@ -6,18 +6,25 @@
 #
 # I'm also going to use the Array#delete_at(index) function, which deletes the
 # element at the given index, but also returns it
+#
+# In this method, we are extending the Array class to support our shuffle
+# method. Notice the use of the keyword self to refer to the calling object
 
-def shuffle(input)
-    randomized = Array.new
+class Array
+    def shuffle
+        original_array = Array.new(self)
 
-    until input.length == 0
-        # initialize a random integer within the array's # of elements
-        randomized_index = rand(input.length)
+        randomized = Array.new
 
-        # push the element at that integer to our output array and delete that
-        # element from our input array
-        randomized << input.delete_at(randomized_index)
+        until original_array.length == 0
+            # initialize a random integer within the array's # of elements
+            randomized_index = rand(original_array.length)
+
+            # push the element at that integer to our output array and delete that
+            # element from our input array
+            randomized << original_array.delete_at(randomized_index)
+        end
+
+        return randomized
     end
-
-    return randomized
 end
